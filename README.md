@@ -47,7 +47,7 @@ Vue.component('swiper-item', SwiperItem)
 - [x] 添加事件 change animationFinish
 - [x] 添加swiper-item item-id支持 
    - [ ] 不常用，暂未支持传入
-- [x] 适配 displayMultipleItems 功能
+- [x] 适配 displayMultipleItems = 2 功能 (displayMultipleItems > 2 暂有残缺)
     - [x] 自动播放，增加边界条件设定
     - [x] 首尾衔接
         - [x] 优化circular切换时的变化
