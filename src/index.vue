@@ -101,6 +101,10 @@
                 return {
                     width: `${coverWidth}px`, height: `${coverHeight}px`
                 }
+            },
+            // cur 最大可取值
+            maxCur() {
+                return this.circular ? (this.count - 1) : (this.count - this.col)    
             }
         },
         watch: {
@@ -166,8 +170,7 @@
                     this.curr = this.curr === minCur ? minCur : --this.curr
                     e.preventDefault()
                 } else if (distance < -this.threshold) {
-                    const maxCur = this.circular ? (this.count - 1) : (this.count - this.col)
-                    this.curr = this.curr < maxCur ? ++this.curr : this.circular ? 0 : this.curr
+                    this.curr = this.curr < this.maxCur ? ++this.curr : this.circular ? 0 : this.curr
                     e.preventDefault()
                 } else if (this.circular && distance < 0 && this.curr === this.count - 1) {
                     // 用于处理 current为count-1时，向current = 0拖动并未达到threshold到界面表现
@@ -210,9 +213,12 @@
             },
             async next() {
                 this.prev = this.curr
-                if (this.curr === this.count - 1) {
+                if (this.circularable && this.curr === this.count - 1) {
                     this.show(-1, false)
                     await wait()
+                }
+                if (this.curr >= this.maxCur) {
+                    this.curr = -1
                 }
                 this.curr++
                 this.show(this.curr)
