@@ -1,16 +1,21 @@
 {
-    "name": "vue-weapp-swiper",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "serve": "vue serve main.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "lodash": "^4.17.11"
-    }
+  "name": "vue-weapp-swiper",
+  "version": "1.0.0",
+  "description": "vue版微信小程序swiper组件",
+  "main": "index.js",
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name swiper src/index.vue && vue-cli-service build --target lib --name swiper-item src/swiper-item.vue --no-clean",
+    "serve": "vue serve main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@vue/cli": "^3.2.1",
+    "@vue/cli-service": "^3.2.0",
+    "vue-template-compiler": "^2.5.17"
   }
+}
